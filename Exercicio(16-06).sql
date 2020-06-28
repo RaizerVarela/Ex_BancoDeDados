@@ -123,17 +123,16 @@ O telefone deve estar mascarado XXXXX-XXXX
 
 
 -- Fazer uma consulta que retorne o nome do cliente e a data do empréstimo formatada padrão BR (dd/mm/yyyy)
-SELECT c.nome,
-		CONVERT(CHAR(10), p.dia,103) AS dia
+SELECT c.nome, CONVERT(CHAR(10), p.dia,103) AS dia
 FROM clientes c, emprestimo p
 WHERE c.cod = p.cod_cli
 GROUP BY c.nome, p.dia
 
 
 -- Fazer uma consulta que retorne Nome do autor e Quantos livros foram escritos por Cada autor, ordenado pelo número de livros. 
--- Se o nome do autor tiver mais de 25 caracteres, mostrar só os 13 primeiros.*/
+-- Se o nome do autor tiver mais de 25 caracteres, mostrar só os 13 primeiros.*/		
 SELECT CASE WHEN (LEN(a.nome) > 25) THEN
-			SUBSTRING(a.nome, 1, 13)
+		SUBSTRING(a.nome, 1, 13)
 		ELSE 
 			a.nome
 		END AS nome,
